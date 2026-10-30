@@ -952,5 +952,7 @@ app.post("/api/admin/maintenance", (req, res) => {
   res.json({ ok: true, settings });
 });
 app.get("/api/health", (req, res) => res.json({ ok: true, service: "KNP999 demo server" }));
-
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 app.listen(PORT, () => console.log(`KNP999 demo running at http://localhost:${PORT}`));
