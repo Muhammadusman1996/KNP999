@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10131f">
+<title>KNP999 — Triple Nine</title>
+<style>
+:root{--bg:#0c1020;--panel:#171d31;--panel2:#202943;--text:#f5f7ff;--muted:#9ba7c2;--gold:#f6c65b;--green:#49d6a0;--line:#303a57}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -10%,#29365b 0,transparent 35%),var(--bg);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#101525ed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:13px 18px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:950;letter-spacing:2px;font-size:23px}.brand span{color:var(--gold)}.sub{font-size:10px;letter-spacing:3px;color:var(--muted);margin-top:-3px}
+.pill{border:1px solid #477d70;color:#78e8c0;background:#15382f;padding:6px 10px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:1px}
+main{max-width:1050px;margin:auto;padding:20px 16px 90px}.hero{padding:23px;border-radius:22px;background:linear-gradient(120deg,#26385c,#382a55 65%,#56344c);border:1px solid #586080;position:relative;overflow:hidden}
+.hero:after{content:"999";position:absolute;right:12px;top:-15px;font-size:110px;font-weight:1000;color:#ffffff10}.eyebrow{color:#f8d77f;font-size:11px;letter-spacing:2px;font-weight:800}.hero h1{font-size:30px;margin:8px 0}.hero p{color:#d0d8eb;max-width:550px;line-height:1.5;margin:0 0 15px}
+.notice{margin:15px 0;padding:12px 14px;background:#172a2a;border:1px solid #2e6556;border-radius:12px;color:#a9f0d4;font-size:13px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}.stat,.card,.adminbox{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:15px}.stat small{color:var(--muted)}.stat strong{display:block;font-size:20px;margin-top:4px}
+.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:24px 0 12px}.sectionhead h2{margin:0;font-size:19px}.muted{color:var(--muted);font-size:12px}
+.games{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.game{min-height:150px;position:relative;overflow:hidden;cursor:pointer;transition:.15s}.game:hover{transform:translateY(-2px);border-color:#64749b}.gameicon{font-size:32px}.game h3{margin:10px 0 4px}.game p{margin:0;color:var(--muted);font-size:12px;line-height:1.4}.tag{display:inline-block;margin-top:10px;font-size:10px;color:var(--gold);letter-spacing:1px;text-transform:uppercase}
+nav{position:fixed;bottom:0;left:0;right:0;background:#11182aee;backdrop-filter:blur(10px);border-top:1px solid var(--line);display:flex;justify-content:center;z-index:10}nav button{flex:1;max-width:220px;background:none;border:0;color:var(--muted);padding:12px 5px;font:inherit;font-size:12px;cursor:pointer}nav button.active{color:var(--gold)}nav b{display:block;font-size:18px;margin-bottom:3px}
+button,.btn{border:0;border-radius:10px;background:var(--gold);color:#201a0c;padding:10px 14px;font-weight:800;cursor:pointer}.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}
+input{width:100%;background:#0f1525;border:1px solid var(--line);color:white;padding:12px;border-radius:10px;margin:7px 0 12px}
+.view{display:none}.view.active{display:block}.gameplay{margin-top:15px;text-align:center;padding:25px}.big{font-size:48px;margin:15px}.result{font-size:20px;color:var(--gold);min-height:30px;margin:15px}
+.admin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.adminbox h3{margin-top:0}.danger{color:#ffb4b4}.footer{text-align:center;color:#78849f;font-size:11px;margin-top:28px}
+@media(max-width:650px){.games{grid-template-columns:repeat(2,1fr)}.stats{gap:7px}.stat{padding:11px}.stat strong{font-size:17px}.hero h1{font-size:25px}.admin-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div><div class="brand">KNP<span>999</span></div><div class="sub">TRIPLE NINE</div></div><div class="pill">FREE PLAY DEMO</div></header>
+<main>
+<section id="home" class="view active">
+ <div class="hero"><div class="eyebrow">WELCOME TO THE DEMO</div><h1>Play. Explore. Enjoy.</h1><p>A polished practice-game interface for the KNP999 platform. All points are virtual and have no cash value.</p><button onclick="showView('games')">Explore Games</button></div>
+ <div id="announcement" class="notice">Loading announcement…</div>
+ <div class="stats"><div class="stat"><small>Demo Coins</small><strong id="coins">10,000</strong></div><div class="stat"><small>Games</small><strong id="gameCount">6</strong></div><div class="stat"><small>Account</small><strong>Guest</strong></div></div>
+ <div class="sectionhead"><h2>Featured Games</h2><span class="muted">Practice only</span></div><div id="featured" class="games"></div>
+</section>
+<section id="games" class="view"><div class="sectionhead"><h2>All Games</h2><span class="muted">Free-play collection</span></div><div id="allgames" class="games"></div></section>
+<section id="wallet" class="view"><div class="sectionhead"><h2>Demo Wallet</h2></div><div class="card"><div class="muted">YOUR VIRTUAL BALANCE</div><div style="font-size:34px;font-weight:900;color:var(--gold);margin:8px 0" id="walletCoins">10,000</div><p class="muted">Demo coins are only for testing the interface. They cannot be purchased, transferred, deposited, or withdrawn.</p><button onclick="resetCoins()">Reset Demo Coins</button></div></section>
+<section id="profile" class="view"><div class="sectionhead"><h2>Guest Profile</h2></div><div class="card"><h3>Welcome, Guest</h3><p class="muted">This is a local demo profile. No personal information is collected.</p><div class="notice">KNP999 Triple Nine · Version 1.0 Demo</div></div></section>
+<section id="admin" class="view"><div class="sectionhead"><h2>Admin Dashboard</h2><span class="pill">LOCAL DEMO</span></div><div class="notice">Demo admin panel only. Add real authentication and role permissions before any production deployment.</div><div class="admin-grid"><div class="adminbox"><div class="muted">DEMO VISITS</div><h2 id="visits">—</h2></div><div class="adminbox"><div class="muted">PRACTICE ROUNDS</div><h2 id="rounds">—</h2></div><div class="adminbox"><div class="muted">AVAILABLE GAMES</div><h2 id="adminGames">—</h2></div><div class="adminbox"><div class="muted">PLATFORM MODE</div><h2>Free Play</h2></div></div>
+ <div class="card" style="margin-top:12px"><h3>Announcement Manager</h3><label class="muted" for="announcementInput">Message shown on home screen</label><input id="announcementInput" maxlength="180" placeholder="Enter announcement"><button onclick="saveAnnouncement()">Save Announcement</button><div id="adminMessage" class="muted" style="margin-top:10px"></div></div>
+ <div class="card" style="margin-top:12px"><h3>Maintenance Switch</h3><p class="muted">Turns on a demo maintenance notice state.</p><button class="secondary" onclick="toggleMaintenance()">Toggle Maintenance</button><div id="maintenanceState" class="muted" style="margin-top:10px"></div></div>
+</section>
+<section id="play" class="view"><button class="secondary" onclick="showView('games')">← Back to games</button><div class="card gameplay"><div class="eyebrow">KNP999 MINI GAME</div><h2 id="playTitle">Game</h2><div class="big" id="playIcon">🎮</div><p class="muted" id="playDescription"></p><div class="result" id="playResult">Ready to play?</div><button onclick="playRound()">Play Practice Round</button><p class="muted">No real money. No cash prizes. Virtual demo points only.</p></div></section>
+<div class="footer">KNP999 is a demonstration project. No real-money gambling or payments are enabled.</div>
+</main>
+<nav><button class="active" data-view="home" onclick="showView('home')"><b>⌂</b>Home</button><button data-view="games" onclick="showView('games')"><b>▦</b>Games</button><button data-view="wallet" onclick="showView('wallet')"><b>◈</b>Wallet</button><button data-view="profile" onclick="showView('profile')"><b>♙</b>Profile</button><button data-view="admin" onclick="showView('admin')"><b>⚙</b>Admin</button></nav>
+<script>
+let gameList=[], currentGame=null, coins=10000, maintenance=false;
+const $=id=>document.getElementById(id);
+async function api(url,opts){const r=await fetch(url,opts);if(!r.ok)throw new Error("Server error");return r.json()}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));$(id).classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));if(id==='admin')loadAdmin();if(id==='wallet')updateCoins();window.scrollTo(0,0)}
+function gameCard(g){return `<div class="card game" onclick="openGame('${g.id}')"><div class="gameicon">${g.icon}</div><h3>${g.name}</h3><p>${g.description}</p><span class="tag">${g.category} · DEMO</span></div>`}
+async function init(){try{const d=await api('/api/config');gameList=d.games;$('announcement').textContent=d.settings.announcement;$('gameCount').textContent=gameList.length;$('featured').innerHTML=gameList.slice(0,3).map(gameCard).join('');$('allgames').innerHTML=gameList.map(gameCard).join('');maintenance=d.settings.maintenance}catch(e){$('announcement').textContent='Demo server is not connected. Start the server to continue.'}updateCoins()}
+function updateCoins(){$('coins').textContent=coins.toLocaleString();$('walletCoins').textContent=coins.toLocaleString()}
+function resetCoins(){coins=10000;updateCoins()}
+function openGame(id){currentGame=gameList.find(g=>g.id===id);if(!currentGame)return;$('playTitle').textContent=currentGame.name;$('playIcon').textContent=currentGame.icon;$('playDescription').textContent=currentGame.description;$('playResult').textContent='Ready to play?';showView('play')}
+function playRound(){if(!currentGame)return;const points=Math.floor(Math.random()*250)+25;coins+=points;updateCoins();$('playResult').textContent=`You earned ${points} virtual demo coins!`; }
+async function loadAdmin(){try{const s=await api('/api/admin/stats');$('visits').textContent=s.visits;$('rounds').textContent=s.rounds;$('adminGames').textContent=s.gameCount;$('maintenanceState').textContent=maintenance?'Maintenance is ON':'Maintenance is OFF';const c=await api('/api/config');$('announcementInput').value=c.settings.announcement}catch(e){$('adminMessage').textContent='Could not connect to demo server.'}}
+async function saveAnnouncement(){try{const a=$('announcementInput').value;await api('/api/admin/announcement',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({announcement:a})});$('announcement').textContent=a;$('adminMessage').textContent='Announcement saved.'}catch(e){$('adminMessage').textContent='Save failed.'}}
+async function toggleMaintenance(){maintenance=!maintenance;try{await api('/api/admin/maintenance',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({enabled:maintenance})});$('maintenanceState').textContent=maintenance?'Maintenance is ON':'Maintenance is OFF'}catch(e){maintenance=!maintenance}}
+init();
+</script>
+</body></html>
