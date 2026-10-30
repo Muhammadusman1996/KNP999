@@ -1,0 +1,14 @@
+{
+  "name": "knp999-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KNP999 Triple Nine free-play demo platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
